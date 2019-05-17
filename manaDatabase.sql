@@ -1,11 +1,11 @@
 Create table tipoProducto 
 (id_tipoProducto int(5) not null auto_increment primary key,
-nombreCategoria varchar(20) not null);
+Categoria varchar(20) not null);
 
 Create table marcas
 (id_marcas int(5) not null auto_increment primary key,
 tipoProducto_id  int(5) not null references tipoProducto(int_tipoProducto),	
-nombreMarca varchar(30) not null);
+Marca varchar(30) not null);
 
 Create table tipoIdentificacion
 (id_tipoIdentificacion int(5) not null auto_increment primary key,
@@ -34,7 +34,7 @@ ciudad varchar(20) not null);
 
 Create table Producto
 (id_Producto int(5) not null auto_increment primary key,
-NombreProducto varchar(20) not null,
+Producto varchar(25) not null,
 Tipo_de_Producto_id int(5) not null references tipoProducto(tipoProducto_id),
 marca_id  int(5) not null references marcas(id_marcas),
 Descripcion varchar(30) not null);
@@ -61,13 +61,13 @@ email_verificado timestamp not null,
 password varchar(30) not null);
 
 Create table descripcion_usuario
-(descripcion_usuario  int(5) not null auto_increment primary key,
+(id_descripcion_usuario  int(5) not null auto_increment primary key,
 usuario_id int(3) not null references usuario(id_usuario),
 Direccion varchar(30) not null,
 Telefono int(10) not null,
 celular int(13) not null,
-departamento  int(20) not null references departamento(id_departamento),
-ciudad int(20) not null references ciudad(id_ciudad));
+departamento  int(5) not null references departamento(id_departamento),
+ciudad int(5) not null references ciudad(id_ciudad));
 
 
 
@@ -95,17 +95,18 @@ ciudad_id int(20) not null references ciudad(id_ciudad)
 
 Create table Proveedores
 (id_Proveedor int(5) not null auto_increment primary key,
-nombreProveedor varchar(30) not null,
+Proveedor varchar(30) not null,
 tipoIdentificacion_id int(5) not null references tipoIdentificacion(id_tipoIdentificacion),
 direccion int(30) not null,
 Telefono int(10) not null,
 celular int(13) not null,
+Correo varchar(30) not null,
 departamento_id int(20) not null references departamento(id_departamento),
 ciudad_id int(20) not null references ciudad(id_ciudad));
 
 Create table ProveedorProducto
 (id_ProveedorProducto int(5) not null auto_increment primary key,
-Proveedor_id int(3) not null references Proveedores(id_Proveedor),
+Proveedor_id int(5) not null references Proveedores(id_Proveedor),
 tipoProducto_id int(5) not null references Producto(id_Producto),
 Cantidad int(13) not null,
 material varchar(30) not null,
@@ -114,7 +115,7 @@ Descripcion varchar(30) not null);
 
 Create table Compra
 (id_compra int(3) int(5) not null auto_increment primary key,
-id_Proveedor int(3) references Proveedores(id_Proveedor),
+Proveedor_id int(3) references Proveedores(id_Proveedor),
 Valor_Neto int(20) not null,
 Descuento int(20) ,
 Valor_Iva int(20) ,
@@ -128,7 +129,7 @@ Compra_id int(3) not null references Compra(id_compra),
 Producto_id int(3) references not null Producto(id_Producto),
 Valor_Unidad int(20) not null,
 Valor_Neto int(20) not null,
-Iva int(20),
+Valor_Iva int(20),
 Valor_Pagar int(20) not null);
 
 Create table Venta
@@ -143,7 +144,25 @@ Fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 Forma_Pago int(30) not null check(Forma_Pago in (‘efectivo’, ‘T.C’, ‘T.P’)));
 
 Create table Detalle_Venta
-(id_detalle_Venta int(5) not null auto_increment primary key,
+(id_detalleVenta int(5) not null auto_increment primary key,
+Venta_id int(5) references not null Venta(id_Venta),
+Producto_id int(3) references not null Producto(id_Producto),
+Cantidad int(20) not null,
+Valor_Neto int(20) not null,
+Valor_Iva int(20),
+Valor_Pagar int(20) not null);
+
+Create table factura
+(id_detalleVenta int(5) not null auto_increment primary key,
+Venta_id int(3) references not null Venta(id_Venta),
+Producto_id int(3) references not null Producto(id_Producto),
+Cantidad int(20) not null,
+Valor_Neto int(20) not null,
+Valor_Iva int(20),
+Valor_Pagar int(20) not null);
+
+Create table recibo
+(id_detalleVenta int(5) not null auto_increment primary key,
 Venta_id int(3) references not null Venta(id_Venta),
 Producto_id int(3) references not null Producto(id_Producto),
 Cantidad int(20) not null,

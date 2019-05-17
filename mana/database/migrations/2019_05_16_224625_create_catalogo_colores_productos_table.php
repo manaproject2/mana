@@ -14,7 +14,8 @@ class CreateCatalogoColoresProductosTable extends Migration
     public function up()
     {
         Schema::create('catalogo_colores_productos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->Increments('id_CCP',5);
+            $table->string('color', 15)->nullable(); 
             $table->timestamps();
         });
     }

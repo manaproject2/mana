@@ -4,6 +4,7 @@ php artisan make:model tipoIdentificacion --migration
 php artisan make:model CatalogoTallas --migration
 php artisan make:model CatalogoColoresProducto --migration
 php artisan make:model CatalogoEstilos --migration
+php artisan make:model departamento --migration
 php artisan make:model ciudad --migration
 php artisan make:model Producto --migration
 php artisan make:model descriptionProducto --migration

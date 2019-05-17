@@ -14,7 +14,8 @@ class CreateCatalogoEstilosTable extends Migration
     public function up()
     {
         Schema::create('catalogo_estilos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id_cataEstilos');
+            $table->string('forma', 15)->nullable(); 
             $table->timestamps();
         });
     }

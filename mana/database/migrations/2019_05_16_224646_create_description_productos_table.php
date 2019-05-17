@@ -14,8 +14,17 @@ class CreateDescriptionProductosTable extends Migration
     public function up()
     {
         Schema::create('description_productos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id_descriptionProducto');
+            $table->integer('Producto_id',5)->unsigned()->nullable();
+            $table->integer('color_id',5)->unsigned()->nullable();
+            $table->integer('talla_id',5)->unsigned()->nullable();
+            $table->integer('Forma_id',5)->unsigned()->nullable();
+            $table->integer('Existencia',3)->nullable();
+            $table->integer('Valor_Venta',6)->nullable();
+            $table->integer('ValorMin',5)->nullable();
+            $table->integer('Iva_Porcentaje',3);
             $table->timestamps();
+            
         });
     }
 

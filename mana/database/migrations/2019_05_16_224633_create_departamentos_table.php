@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTipoIdentificacionsTable extends Migration
+class CreateDepartamentosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateTipoIdentificacionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_identificacions', function (Blueprint $table) {
-            $table->Increments('id_tipoIdentificacion',5);
-            $table->string('identificacion', 15)->nullable(); 
+        Schema::create('departamentos', function (Blueprint $table) {
+            $table->Increments('id_departamento');
+            $table->string('departamento', 20)->nullable(); 
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateTipoIdentificacionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_identificacions');
+        Schema::dropIfExists('departamentos');
     }
 }

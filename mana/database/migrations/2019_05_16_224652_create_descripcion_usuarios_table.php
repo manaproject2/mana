@@ -14,7 +14,13 @@ class CreateDescripcionUsuariosTable extends Migration
     public function up()
     {
         Schema::create('descripcion_usuarios', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id_descriptionProducto');
+            $table->integer('usuario_id',5)->unsigned()->nullable();
+            $table->integer('departamento',5)->unsigned()->nullable();
+            $table->integer('ciudad',5)->unsigned()->nullable();
+            $table->string('Direccion',30)->nullable();
+            $table->string('Telefono',10)->nullable();
+            $table->string('celular',13)->nullable();
             $table->timestamps();
         });
     }
