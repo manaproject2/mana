@@ -1,0 +1,14 @@
+select DISTINCT 
+producto.id_Producto,
+Producto.NombreProducto,
+tipoProducto.nombreCategoria,
+marcas.nombreMarca
+from producto 
+inner join tipoProducto 
+on tipoproducto.id_tipoProducto=producto.Tipo_de_Producto_id
+inner join marcas
+on  tipoproducto.id_tipoProducto=marcas.tipoProducto_id 
+where id_Producto="1"
+GROUP BY producto.id_Producto
+;
+

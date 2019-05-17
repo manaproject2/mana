@@ -1,0 +1,10 @@
+1. composer create-project --prefer-dist laravel/laravel mana   1. Le nom de mon project
+2. R�glages 
+  
+
+Backend
+1. npm   init -y
+
+
+Database 
+
