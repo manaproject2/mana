@@ -9,7 +9,9 @@ Marca varchar(30) not null);
 
 Create table tipoIdentificacion
 (id_tipoIdentificacion int(5) not null auto_increment primary key,
-identificacion varchar(15) not null);
+identificacion varchar(15) not null,
+numero varchar(15) not null,
+);
 
 Create table CatalogoTallas
 (id_cataTallas int(5) not null auto_increment primary key,
@@ -153,19 +155,21 @@ Valor_Iva int(20),
 Valor_Pagar int(20) not null);
 
 Create table factura
-(id_detalleVenta int(5) not null auto_increment primary key,
-Venta_id int(3) references not null Venta(id_Venta),
-Producto_id int(3) references not null Producto(id_Producto),
-Cantidad int(20) not null,
-Valor_Neto int(20) not null,
-Valor_Iva int(20),
-Valor_Pagar int(20) not null);
+(id_factura int(5) not null auto_increment primary key,
+Vendedor_id int(3) references not null Vendedor(id_Vendedor),
+Cliente_id int(3) references  Cliente(id_Cliente),
+detalleVenta_id int(3) references not null Detalle_Venta(id_detalleVenta),
+tipoIdentificacion_id int(5)  references tipoIdentificacion(id_tipoIdentificacion),
+nombre varchar(30) not null,
+nit varchar(30) not null,
+Fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+);
 
 Create table recibo
-(id_detalleVenta int(5) not null auto_increment primary key,
-Venta_id int(3) references not null Venta(id_Venta),
-Producto_id int(3) references not null Producto(id_Producto),
-Cantidad int(20) not null,
-Valor_Neto int(20) not null,
-Valor_Iva int(20),
-Valor_Pagar int(20) not null);
+(id_recibo int(5) not null auto_increment primary key,
+Vendedor_id int(3) references not null Vendedor(id_Vendedor),
+Cliente_id int(3) references  Cliente(id_Cliente),
+detalleVenta_id int(3) references not null Detalle_Venta(id_detalleVenta),
+nombre varchar(30) not null,
+Fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+);

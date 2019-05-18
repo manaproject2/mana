@@ -15,9 +15,9 @@ class CreateClientesTable extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->increments('id_Cliente');
-            $table->integer('tipoIdentificacion_id',5)->unsigned()->nullable();
-            $table->integer('departamento_id',5)->unsigned()->nullable();
-            $table->integer('ciudad_id',5)->unsigned()->nullable();
+            $table->integer('tipoIdentificacion_id')->unsigned()->nullable();
+            $table->integer('departamento_id')->unsigned()->nullable();
+            $table->integer('ciudad_id')->unsigned()->nullable();
             $table->string('ciente',30)->nullable();
             $table->string('Direccion',30)->nullable();
             $table->string('Telefono',10)->nullable();

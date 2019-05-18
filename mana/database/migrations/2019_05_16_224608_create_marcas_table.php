@@ -15,7 +15,7 @@ class CreateMarcasTable extends Migration
     {
         Schema::create('marcas', function (Blueprint $table) {
             $table->Increments('id_marcas');
-            $table->Increments('tipoProducto_id',5)->unsigned()->nullable();
+            $table->integer('tipoProducto_id')->unsigned()->nullable();
             $table->string('Marca', 30)->nullable(); 
             $table->timestamps();
         });

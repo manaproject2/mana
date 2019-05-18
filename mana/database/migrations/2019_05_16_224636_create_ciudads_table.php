@@ -15,7 +15,7 @@ class CreateCiudadsTable extends Migration
     {
         Schema::create('ciudads', function (Blueprint $table) {
             $table->Increments('id_ciudad');
-            $table->Increments('departamento_id',5)->unsigned()->nullable();
+            $table->integer('departamento_id')->unsigned()->nullable();
             $table->string('ciudad', 20)->nullable(); 
             $table->timestamps();
         });
