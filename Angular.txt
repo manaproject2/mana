@@ -1,0 +1,3 @@
+ng new frontend
+
+To create components 
