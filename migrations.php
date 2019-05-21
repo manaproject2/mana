@@ -19,3 +19,5 @@ php artisan make:model Venta --migration
 php artisan make:model Detalle_Venta --migration
 php artisan make:model factura --migration
 php artisan make:model recibo --migration
+
+php artisan migrate
