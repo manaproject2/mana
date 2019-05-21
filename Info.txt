@@ -11,3 +11,13 @@ Database
 It's missing tables Receipts and invoice
 https://www.youtube.com/watch?v=32b9o6e_LBg&list=PLe30vg_FG4OSbizS6Gpw_LICp9zBcmjZU&index=2
 
+To install Laravel JWT
+Install via composer
+https://github.com/tymondesigns/jwt-auth
+Run the following command to pull in the latest version:
+
+composer require tymon/jwt-auth
+
+To install Boostrap
+npm install bootstrap
+
