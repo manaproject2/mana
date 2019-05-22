@@ -21,3 +21,8 @@ php artisan make:model factura --migration
 php artisan make:model recibo --migration
 
 php artisan migrate
+
+//To modify a migration
+php artisan make:migration create_profiles_table --create=profiles
+
+php artisan make:migration add_avatar_to_cliente

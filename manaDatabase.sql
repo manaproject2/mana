@@ -59,7 +59,7 @@ Create table usuario
 (id_usuario  int(5) not null auto_increment primary key,
 nombre varchar(30) not null,
 email varchar(30) not null,
-email_verificado timestamp not null,
+email_verificado timestamp ,
 password varchar(30) not null);
 
 Create table descripcion_usuario
@@ -84,14 +84,14 @@ Eps varchar(30) not null check(Categoria in (‘Medimas’, ‘Sura’, ‘Comfa
 
 Create table Cliente
 (id_Cliente int(5) not null auto_increment primary key,
-ciente varchar(30) not null,
-tipoIdentificacion_id int(5) not null references tipoIdentificacion(id_tipoIdentificacion),
-Direccion varchar(30) not null,
-Telefono int(10) not null,
-celular int(13) not null,
-Correo varchar(30) not null,
-departamento_id  int(20) not null references departamento(id_departamento),
-ciudad_id int(20) not null references ciudad(id_ciudad)
+cliente varchar(30),
+tipoIdentificacion_id int(5)  references tipoIdentificacion(id_tipoIdentificacion),
+Direccion varchar(30) ,
+Telefono int(10) ,
+celular int(13) ,
+Correo varchar(30) ,
+departamento_id  int(20)  references departamento(id_departamento),
+ciudad_id int(20)  references ciudad(id_ciudad)
 );
 
 
@@ -159,7 +159,6 @@ Create table factura
 Vendedor_id int(3) references not null Vendedor(id_Vendedor),
 Cliente_id int(3) references  Cliente(id_Cliente),
 detalleVenta_id int(3) references not null Detalle_Venta(id_detalleVenta),
-tipoIdentificacion_id int(5)  references tipoIdentificacion(id_tipoIdentificacion),
 nombre varchar(30) not null,
 nit varchar(30) not null,
 Fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

@@ -1,3 +1,8 @@
 ng new frontend
 
 To create components 
+ng g c components/navbar
+ng g c components/auth/signup
+
+To create routing
+ng g m app-routing --flat --module=app
