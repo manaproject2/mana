@@ -60,7 +60,7 @@ Create table usuario
 nombre varchar(30) not null,
 email varchar(30) not null,
 email_verificado timestamp ,
-password varchar(30) not null);
+password varchar(255) not null);
 
 Create table Vendedor
 (id_Vendedor int(5) not null auto_increment primary key,

@@ -27,9 +27,8 @@ class SignRequest extends FormRequest
             'nombre' => ['required', 'string', 'max:30'],
             'email' => ['required', 'string', 'email', 'max:30', 'unique:users'],
             //'password' => 'required|between:2,255|confirmed',
-
-            'password' => 'required|between:2,255|confirmed',
-            'password_confirmation' => 'required',
+            'password' => 'min:2|required', 'password_confirmation' => 'min:2|same:password'
+            
         ];
     }
 }
