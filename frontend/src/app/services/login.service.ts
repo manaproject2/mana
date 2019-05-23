@@ -25,6 +25,5 @@ export class LoginService {
     return this.http.post(this.API_URI + 'login', login, {headers: headers});
    }
 
-
-
+   
 }

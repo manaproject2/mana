@@ -4,6 +4,8 @@ import {HttpClient} from '@angular/common/http'; //To import the service
 import  {Login} from "../../../models/login";
 import {LoginService} from "../../../services/login.service";
 import {ActivatedRoute , Router} from "@angular/router";
+import { TokenService } from 'src/app/services/token.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -24,7 +26,11 @@ export class LoginComponent implements OnInit {
     
    };
 
-  constructor(private loginService :LoginService,  private activateRoute: ActivatedRoute, private router:Router  ) {}
+    
+
+  constructor(private loginService :LoginService, 
+     private activateRoute: ActivatedRoute, private router:Router , private Token : TokenService,
+     private Auth: AuthService) {}
 
   //To create methods 
   // onSubmit(){
@@ -44,15 +50,25 @@ export class LoginComponent implements OnInit {
   }
 
    LoginIn(){
-    this.loginService.loginIn(this.login).subscribe((data) => {
-      this.router.navigate(['/'])  //To redirect to another component
+    this.loginService.loginIn(this.login).subscribe(
+      data => {
       console.log(data);
+      this.handlResponse(data)
+      
+      
       
     }, (error) => {
       this.handleError(error)
       //alert('Querry faild');
     });
    }
+
+   handlResponse(data: any){
+    this.Token.handle(data.access_token);
+    this.Auth.changeAuthStaus(true);
+    this.router.navigateByUrl('/dashboard');  //To redirect to another component
+    
+  }
 
    handleError(error){
     this.error = error.error.error;

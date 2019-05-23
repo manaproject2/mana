@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import  {Signup} from "../../../models/signup";
 import {SignupService} from "../../../services/signup/signup.service";
 import {ActivatedRoute , Router} from "@angular/router";
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-signup',
@@ -20,13 +21,15 @@ export class SignupComponent implements OnInit {
   public error = [];
 
   
-  constructor(private signupService :SignupService,  private activateRoute: ActivatedRoute, private router:Router  ) {}
+  constructor(private signupService :SignupService,  private activateRoute: ActivatedRoute, private router:Router, private Token: TokenService ) {}
   ngOnInit() {
   }
 
   singUp(){
-    this.signupService.singUp(this.signup).subscribe((data) => {
-      this.router.navigate(['/'])  //To redirect to another component
+    this.signupService.singUp(this.signup).subscribe(
+      data => {
+      this.handlResponse(data)
+      
       console.log(data);
       
     }, (error) => {
@@ -34,6 +37,11 @@ export class SignupComponent implements OnInit {
       alert('Querry faild');
     });
    }
+
+   handlResponse(data: any){
+    this.Token.handle(data.access_token);
+    this.router.navigateByUrl('/dashboard');  //To redirect to another component
+  }
 
    handleError(error){
     this.error = error.error.errors;

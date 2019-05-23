@@ -12,7 +12,23 @@ import { ResponseResetComponent } from './components/auth/password-reset/respons
 import {HttpClientModule} from '@angular/common/http'; //To import the service
 import { LoginService } from './services/login.service';
 import { SignupService } from './services/signup/signup.service';
+import { HomeComponent } from './components/home/home.component';
+import {Route, RouterModule } from '@angular/router';
 
+
+/** Routes */
+const appRoutesAuth: Route [] = [
+  {path:'login', component:LoginComponent },
+  {path:'signup',component:SignupComponent },
+  {path:'dashboard',component:DashboardComponent},
+  {path:'request-password-reset',component:RequestResetComponent},
+  {path:'response-password-reset',component:ResponseResetComponent},
+]
+
+const appHomeRutas: Route [] = [
+  {path: '', component: HomeComponent},
+  {path: 'home', component: HomeComponent},
+]
 
 @NgModule({
   declarations: [
@@ -22,13 +38,16 @@ import { SignupService } from './services/signup/signup.service';
     SignupComponent,
     DashboardComponent,
     RequestResetComponent,
-    ResponseResetComponent
+    ResponseResetComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(appRoutesAuth),
+    RouterModule.forRoot(appHomeRutas),
   ],
   providers: [
     LoginService,

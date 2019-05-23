@@ -1,0 +1,11 @@
+ LoginIn(){
+    this.loginService.loginIn(this.login).subscribe((data) => {
+      (data: any) => this.handlResponse(data)
+      this.router.navigate(['/'])  //To redirect to another component
+      console.log(data);
+      
+    }, (error) => {
+      this.handleError(error)
+      //alert('Querry faild');
+    });
+   }
