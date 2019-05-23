@@ -62,17 +62,6 @@ email varchar(30) not null,
 email_verificado timestamp ,
 password varchar(30) not null);
 
-Create table descripcion_usuario
-(id_descripcion_usuario  int(5) not null auto_increment primary key,
-usuario_id int(3) not null references usuario(id_usuario),
-Direccion varchar(30) not null,
-Telefono int(10) not null,
-celular int(13) not null,
-departamento  int(5) not null references departamento(id_departamento),
-ciudad int(5) not null references ciudad(id_ciudad));
-
-
-
 Create table Vendedor
 (id_Vendedor int(5) not null auto_increment primary key,
 Vendedor varchar(30) not null,
@@ -84,6 +73,8 @@ Eps varchar(30) not null check(Categoria in (‘Medimas’, ‘Sura’, ‘Comfa
 
 Create table Cliente
 (id_Cliente int(5) not null auto_increment primary key,
+usuario_id int(5) not null references usuario(id_usuario),	
+avatar varchar(30),
 cliente varchar(30),
 tipoIdentificacion_id int(5)  references tipoIdentificacion(id_tipoIdentificacion),
 Direccion varchar(30) ,

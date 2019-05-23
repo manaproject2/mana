@@ -1,6 +1,6 @@
 <?php
 
-namespace mana\Providers;
+namespace app\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;

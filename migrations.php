@@ -26,3 +26,7 @@ php artisan migrate
 php artisan make:migration create_profiles_table --create=profiles
 
 php artisan make:migration add_avatar_to_cliente
+php artisan make:migration add_usuario_id_to_cliente
+
+
+php artisan make:request SignRequest

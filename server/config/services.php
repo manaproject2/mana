@@ -35,7 +35,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => mana\User::class,
+        'model' => app\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
         'webhook' => [

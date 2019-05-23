@@ -68,7 +68,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => mana\User::class,
+            'model' => app\User::class,
         ],
 
         // 'users' => [

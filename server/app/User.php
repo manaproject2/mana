@@ -1,6 +1,6 @@
 <?php
 
-namespace mana;
+namespace app;
 
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
@@ -39,7 +39,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'nombre', 'email', 'password','password_confirmation',
     ];
 
     /**
@@ -59,6 +59,12 @@ class User extends Authenticatable implements JWTSubject
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function setPasswordAttribute($value)
+    {
+       
+        return $this->attributes ['password'] = bcrypt($value);
+    }
 
     
 
