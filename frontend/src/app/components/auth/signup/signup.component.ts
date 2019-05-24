@@ -41,7 +41,7 @@ export class SignupComponent implements OnInit {
 
    handlResponse(data){
     this.Token.handle(data.access_token);
-    this.Auth.changeAuthStaus(true);
+    this.Auth.changeAuthStaus(false);
     this.router.navigateByUrl('/dashboard');  //To redirect to another component
   }
 

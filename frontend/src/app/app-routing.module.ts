@@ -8,18 +8,21 @@ import { ResponseResetComponent } from './components/auth/password-reset/respons
 import { HomeComponent } from './components/home/home.component';
 import { BeforeLoginService } from './services/canDeactive/before-login.service';
 import { AfterLoginService } from './services/canDeactive/after-login.service';
+import { AuthGuard } from './auth/guard/auth.guard';
+import { AfterloginGuard } from './auth/guard/afterlogin.guard';
 
-const routes: Routes = [
+const routes: Routes = [ 
   {path: '', component: HomeComponent,},
-  {path: 'home', component: HomeComponent},
-  {path:'login',component:LoginComponent , canActivate: [BeforeLoginService]},
-  {path:'signup',component:SignupComponent,  canActivate: [BeforeLoginService]},
-  {path:'dashboard',component:DashboardComponent , canActivate : [AfterLoginService]}, 
+  {path: 'home', component: HomeComponent , canActivate : [AuthGuard]},
+  {path:'login',component:LoginComponent , canActivate : [AuthGuard]},  
+  {path:'signup',component:SignupComponent , canActivate : [AuthGuard]},   
+  {path:'dashboard',component:DashboardComponent , canActivate : [AfterloginGuard]}, 
   {path:'request-password-reset',component:RequestResetComponent , canActivate : [AfterLoginService]},
   {path:'response-password-reset',component:ResponseResetComponent, canActivate : [AfterLoginService]},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes),
+
  ],
   
   exports: [RouterModule]
