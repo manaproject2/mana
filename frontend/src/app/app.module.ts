@@ -14,21 +14,25 @@ import { LoginService } from './services/login.service';
 import { SignupService } from './services/signup/signup.service';
 import { HomeComponent } from './components/home/home.component';
 import {Route, RouterModule } from '@angular/router';
+import { BeforeLoginService } from './services/canDeactive/before-login.service';
+import { AfterLoginService } from './services/canDeactive/after-login.service';
+import { CanActivate} from '@angular/router';
 
+// /** Routes */
+// const appRoutesAuth: Route [] = [
+//   {path:'login', component:LoginComponent,  
+//   canActivate: BeforeLoginService},
+//   {path:'signup',component:SignupComponent,
+//    canActivate: AfterLoginService },
+//   {path:'dashboard',component:DashboardComponent},
+//   {path:'request-password-reset',component:RequestResetComponent},
+//   {path:'response-password-reset',component:ResponseResetComponent},
+// ]
 
-/** Routes */
-const appRoutesAuth: Route [] = [
-  {path:'login', component:LoginComponent },
-  {path:'signup',component:SignupComponent },
-  {path:'dashboard',component:DashboardComponent},
-  {path:'request-password-reset',component:RequestResetComponent},
-  {path:'response-password-reset',component:ResponseResetComponent},
-]
-
-const appHomeRutas: Route [] = [
-  {path: '', component: HomeComponent},
-  {path: 'home', component: HomeComponent},
-]
+// const appHomeRutas: Route [] = [
+//   {path: '', component: HomeComponent},
+//   {path: 'home', component: HomeComponent},
+// ]
 
 @NgModule({
   declarations: [
@@ -46,12 +50,15 @@ const appHomeRutas: Route [] = [
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutesAuth),
-    RouterModule.forRoot(appHomeRutas),
+    //RouterModule.forRoot(appRoutesAuth),
+    //RouterModule.forRoot(appHomeRutas),
+
   ],
   providers: [
     LoginService,
-    SignupService
+    SignupService,
+    AfterLoginService,
+    BeforeLoginService
   ],
   bootstrap: [AppComponent]
 

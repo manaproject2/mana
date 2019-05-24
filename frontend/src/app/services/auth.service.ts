@@ -12,7 +12,9 @@ authStatus = this.loggeIn.asObservable();
 
 changeAuthStaus(value: boolean){
   this.loggeIn.next(value)
-}
+  console.log("ChanngeStatus" + value);
+  alert('Auth fallo');
+  }
 
   constructor( private Token:TokenService) { }
 }

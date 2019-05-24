@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
     });
    }
 
-   handlResponse(data: any){
+   handlResponse(data){
     this.Token.handle(data.access_token);
     this.Auth.changeAuthStaus(true);
     this.router.navigateByUrl('/dashboard');  //To redirect to another component

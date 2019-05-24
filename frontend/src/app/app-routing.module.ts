@@ -6,46 +6,22 @@ import { DashboardComponent } from './components/auth/dashboard/dashboard.compon
 import { RequestResetComponent } from './components/auth/password-reset/request-reset/request-reset.component';
 import { ResponseResetComponent } from './components/auth/password-reset/response-reset/response-reset.component';
 import { HomeComponent } from './components/home/home.component';
+import { BeforeLoginService } from './services/canDeactive/before-login.service';
+import { AfterLoginService } from './services/canDeactive/after-login.service';
 
-// const appRoutesAuth: Routes = [
-  
-//   {
-//     path:'',
-//     component:HomeComponent 
-//   },
-
-//   {
-//     path:'home',
-//     component:HomeComponent 
-//   },
-  
-//   {
-//     path:'login',
-//     component:LoginComponent 
-//   },
-
-//   {
-//     path:'signup',
-//     component:SignupComponent 
-//   },
-//   {
-//     path:'dashboard',
-//     component:DashboardComponent 
-//   },
-//   {
-//     path:'request-password-reset',
-//     component:RequestResetComponent 
-//   },
-//   {
-//     path:'response-password-reset',
-//     component:ResponseResetComponent 
-//   },
-// ];
-
-
-
+const routes: Routes = [
+  {path: '', component: HomeComponent,},
+  {path: 'home', component: HomeComponent},
+  {path:'login',component:LoginComponent , canActivate: [BeforeLoginService]},
+  {path:'signup',component:SignupComponent,  canActivate: [BeforeLoginService]},
+  {path:'dashboard',component:DashboardComponent , canActivate : [AfterLoginService]}, 
+  {path:'request-password-reset',component:RequestResetComponent , canActivate : [AfterLoginService]},
+  {path:'response-password-reset',component:ResponseResetComponent, canActivate : [AfterLoginService]},
+];
 @NgModule({
-  //imports: [RouterModule.forRoot(appRoutesAuth)],
+  imports: [RouterModule.forRoot(routes),
+ ],
+  
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

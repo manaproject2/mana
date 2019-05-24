@@ -14,3 +14,6 @@ To create a service
 ng g s services/login
 ng g s services/signup/signup
 ng g s services/Token
+ng g s services/canDeactive/before-login --module=app
+ng g s services/canDeactive/after-login --module=app
+ng g s services/Auth --module=app

@@ -25,13 +25,13 @@
         <a class="nav-link" routerLink="login" *ngIf="!loggedin">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="login" *ngIf="loggedin">Logout</a>
+        <a class="nav-link" href="#" (click)=logout($event) *ngIf="loggedin">Logout</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/signup">Register </a>
+        <a class="nav-link" routerLink="/signup" *ngIf="!loggedin">Register</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="dashboard">Dashboard </a>
+        <a class="nav-link" routerLink="dashboard" *ngIf="loggedin" >Dashboard</a>
       </li>
 
     </ul>

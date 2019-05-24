@@ -3,6 +3,7 @@ import  {Signup} from "../../../models/signup";
 import {SignupService} from "../../../services/signup/signup.service";
 import {ActivatedRoute , Router} from "@angular/router";
 import { TokenService } from 'src/app/services/token.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -21,7 +22,7 @@ export class SignupComponent implements OnInit {
   public error = [];
 
   
-  constructor(private signupService :SignupService,  private activateRoute: ActivatedRoute, private router:Router, private Token: TokenService ) {}
+  constructor(private signupService :SignupService,  private activateRoute: ActivatedRoute, private router:Router, private Token: TokenService , private Auth: AuthService)  {}
   ngOnInit() {
   }
 
@@ -38,8 +39,9 @@ export class SignupComponent implements OnInit {
     });
    }
 
-   handlResponse(data: any){
+   handlResponse(data){
     this.Token.handle(data.access_token);
+    this.Auth.changeAuthStaus(true);
     this.router.navigateByUrl('/dashboard');  //To redirect to another component
   }
 

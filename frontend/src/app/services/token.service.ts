@@ -15,7 +15,7 @@ export class TokenService {
   handle(Token){
   
     this.set(Token);
-  
+    console.log("Token service" + this.payload(Token));
     console.log(this.isValid())
   }
 
@@ -44,7 +44,7 @@ export class TokenService {
    return false;
   }
 
-  payload(token:any){
+  payload(token){
     const payload =  token.split('.')[1];
     return this.decode(payload);
   }
