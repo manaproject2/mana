@@ -25,5 +25,9 @@ export class LoginService {
     return this.http.post(this.API_URI + 'login', login, {headers: headers});
    }
 
-   
-}
+   sendPasswordResetLink(login: Login){
+    const headers = new HttpHeaders({'content-type': 'application/json'});  
+    return this.http.post(this.API_URI + 'sendPasswordResetLink', login, {headers: headers});
+   }
+
+  }

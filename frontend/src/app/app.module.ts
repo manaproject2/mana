@@ -16,7 +16,7 @@ import { HomeComponent } from './components/home/home.component';
 import {Route, RouterModule } from '@angular/router';
 import { BeforeLoginService } from './services/canDeactive/before-login.service';
 import { AfterLoginService } from './services/canDeactive/after-login.service';
-
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 
 // /** Routes */
 // const appRoutesAuth: Route [] = [
@@ -50,8 +50,7 @@ import { AfterLoginService } from './services/canDeactive/after-login.service';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    //RouterModule.forRoot(appRoutesAuth),
-    //RouterModule.forRoot(appHomeRutas),
+    SnotifyModule
 
   ],
   providers: [
@@ -59,8 +58,9 @@ import { AfterLoginService } from './services/canDeactive/after-login.service';
     SignupService,
     AfterLoginService,
     BeforeLoginService,
-    
-  ],
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+    SnotifyService
+    ],
   bootstrap: [AppComponent]
 
 })
