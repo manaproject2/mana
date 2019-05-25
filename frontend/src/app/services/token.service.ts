@@ -12,17 +12,17 @@ export class TokenService {
 
   constructor() { }
 
-  handle(Token){
+  handle(token){
   
-    this.set(Token);
-    console.log("Token service" + this.payload(Token));
-    console.log(this.isValid())
+    this.set(token);
+   
   }
 
   //To set the token to authenticate user 
-  set(token) {
+  set(token: any) {
     
     localStorage.setItem('token' , token)
+    console.log(token);
   }
 
   get(){
@@ -33,18 +33,19 @@ export class TokenService {
     return localStorage.removeItem('token');
   }
 
+ 
   isValid(){
-    const token = this.get();
-   if (token) {
-     const payload = this.payload(token);
-     if(payload){
-       return Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false;
-     }
-   }
-   return false;
+    const Token = this.get();
+    console.log(Token);
+    if(Token){
+      const payload = this.payload(Token);
+      if(payload) {
+        return Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false;
+      }
+    }
   }
 
-  payload(token){
+  payload(token: any){
     const payload =  token.split('.')[1];
     return this.decode(payload);
   }
@@ -55,9 +56,7 @@ export class TokenService {
   }
 
   loggedIn(){
-    return this.isValid();
+    if(localStorage.getItem('token') != null )
+      return true;
+     }
   }
-
-  
-
-}

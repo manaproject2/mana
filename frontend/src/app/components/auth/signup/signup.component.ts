@@ -31,8 +31,6 @@ export class SignupComponent implements OnInit {
       data => {
       this.handlResponse(data)
       
-      console.log(data);
-      
     }, (error) => {
       this.handleError(error)
       alert('Querry faild');
@@ -41,7 +39,7 @@ export class SignupComponent implements OnInit {
 
    handlResponse(data){
     this.Token.handle(data.access_token);
-    this.Auth.changeAuthStaus(false);
+    this.Auth.changeAuthStaus(true);
     this.router.navigateByUrl('/dashboard');  //To redirect to another component
   }
 

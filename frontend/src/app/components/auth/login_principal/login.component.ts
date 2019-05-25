@@ -52,12 +52,10 @@ export class LoginComponent implements OnInit {
    LoginIn(){
     this.loginService.loginIn(this.login).subscribe(
       data => {
-      console.log(data);
-      this.handlResponse(data)
       
-      
-      
-    }, (error) => {
+      this.handlResponse(data);
+  
+      }, (error) => {
       this.handleError(error)
       //alert('Querry faild');
     });

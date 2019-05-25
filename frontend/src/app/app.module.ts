@@ -16,8 +16,7 @@ import { HomeComponent } from './components/home/home.component';
 import {Route, RouterModule } from '@angular/router';
 import { BeforeLoginService } from './services/canDeactive/before-login.service';
 import { AfterLoginService } from './services/canDeactive/after-login.service';
-import { AuthGuard } from './auth/guard/auth.guard';
-import { AfterloginGuard } from './auth/guard/afterlogin.guard';
+
 
 // /** Routes */
 // const appRoutesAuth: Route [] = [
@@ -60,8 +59,7 @@ import { AfterloginGuard } from './auth/guard/afterlogin.guard';
     SignupService,
     AfterLoginService,
     BeforeLoginService,
-    AuthGuard,
-    AfterloginGuard
+    
   ],
   bootstrap: [AppComponent]
 

@@ -9,6 +9,7 @@ import { TokenService } from '../token.service';
 export class BeforeLoginService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | 
   Observable<boolean> | Promise<boolean> {
+   
     return !this.Token.loggedIn();
  
   }
