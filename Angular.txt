@@ -5,6 +5,7 @@ ng g c components/navbar
 ng g c components/auth/signup
 ng g c components/home
 
+
 To create routing
 ng g m app-routing --flat --module=app
 

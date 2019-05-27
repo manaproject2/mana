@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import  {Login} from "../../../../models/login"
 import { LoginService } from 'src/app/services/login.service';
-import { SnotifyModule } from 'ng-snotify';
+import {  SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-request-reset',
@@ -18,7 +18,7 @@ export class RequestResetComponent implements OnInit {
   
   constructor(
   private loginService: LoginService,
-  private notify: SnotifyModule
+  private notify: SnotifyService
   ) { }
 
   ngOnInit() {
@@ -32,17 +32,15 @@ export class RequestResetComponent implements OnInit {
       this.handlResponse(data);
   
       }, (error) => {
-       this.notify.error
+       this.notify.error(error.error.error)
       //alert('Querry faild');
     });
   
   }
 
   handlResponse(res){
-    // this.login.email = null
-    // this.Token.handle(data.access_token);
-    // this.Auth.changeAuthStaus(true);
-    // this.router.navigateByUrl('/dashboard');  //To redirect to another component
+    console.log(res)
+    this.login.email = null;
     
   }
 }
