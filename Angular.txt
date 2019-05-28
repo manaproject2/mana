@@ -19,6 +19,7 @@ ng g s services/canDeactive/before-login --module=app
 ng g s services/canDeactive/after-login --module=app
 ng g s services/auth/authGuards --module=app
 ng g s services/Auth --module=app
+ng g s services/response-reset --module=app
 
 To creare a guard
 ng g g auth/guard/Afterlogin

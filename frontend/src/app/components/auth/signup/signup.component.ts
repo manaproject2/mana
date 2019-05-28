@@ -12,12 +12,13 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class SignupComponent implements OnInit {
 
-  signup: Signup = {
+   signup: Signup = {
    nombre: null,
    email: null,
    email_verified: null,
    password: null,
    password_confirmation: null,
+   resetToken: null
   };
   public error = [];
 
