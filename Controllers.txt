@@ -1,3 +1,0 @@
-php artisan make:controller AuthController  
-php artisan make:controller ResetPasswordController
-php artisan make:controller ChangePasswordController

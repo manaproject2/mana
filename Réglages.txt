@@ -1,2 +1,0 @@
-Le nom de mon app
-php artisan app:name  mana

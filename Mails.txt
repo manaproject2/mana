@@ -1,3 +1,0 @@
-php artisan make:mail ResetPasswordMail --markdown=Email.passwordReset
-
-use Illuminate\Support\Facades\Mail;
