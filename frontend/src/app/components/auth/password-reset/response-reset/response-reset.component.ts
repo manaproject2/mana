@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import  {Signup} from '../../../../models/signup';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ResponseResetService} from '../../../../services/response-reset.service';
+import { SnotifyService } from 'ng-snotify';
 
 
 
@@ -23,8 +24,11 @@ export class ResponseResetComponent implements OnInit {
     };
   
   constructor(
-    private route:ActivatedRoute, private respondeReset:ResponseResetService , private router : Router
+    private route:ActivatedRoute, private respondeReset:ResponseResetService , private router : Router,
+    private Notify: SnotifyService
   ) { 
+    
+    
     route.queryParams.subscribe(params => {
       this.signup.resetToken = params['token']
     });
@@ -37,12 +41,23 @@ export class ResponseResetComponent implements OnInit {
       
     }, (error) => {
       this.handleError(error)
-      alert('Querry faild');
+      
     });
    }
 
    handlResponse(data){
-        
+    
+    let _router = this.router;
+    this.Notify.confirm('Done! , Now login with new password', {
+      buttons:[
+       {text: 'Okay',
+       action: toaster =>{
+         _router.navigateByUrl('/login'),
+         this.Notify.remove(toaster.id)
+       }
+      },
+      ]
+    })    
     this.router.navigateByUrl('/login');
   }
 

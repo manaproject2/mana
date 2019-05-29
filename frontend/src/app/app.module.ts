@@ -17,6 +17,8 @@ import {Route, RouterModule } from '@angular/router';
 import { BeforeLoginService } from './services/canDeactive/before-login.service';
 import { AfterLoginService } from './services/canDeactive/after-login.service';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { CorouselSlideComponent } from './components/partials/corousel-slide/corousel-slide.component';
 
 // /** Routes */
 // const appRoutesAuth: Route [] = [
@@ -43,14 +45,16 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
     DashboardComponent,
     RequestResetComponent,
     ResponseResetComponent,
-    HomeComponent
+    HomeComponent,
+    CorouselSlideComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    SnotifyModule
+    SnotifyModule,
+    NgbModule
 
   ],
   providers: [

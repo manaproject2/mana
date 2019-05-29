@@ -18,7 +18,8 @@ export class RequestResetComponent implements OnInit {
   
   constructor(
   private loginService: LoginService,
-  private notify: SnotifyService
+  private notify: SnotifyService,
+  private Notify: SnotifyService
   ) { }
 
   ngOnInit() {
@@ -26,20 +27,22 @@ export class RequestResetComponent implements OnInit {
 
   sendPasswordReset(){
     
+    this.Notify.info('Wait...' , {timeout:5000})
     this.loginService.sendPasswordResetLink(this.login).subscribe(
       data => {
       
-      this.handlResponse(data);
+      this.handlResponse(data)
   
       }, (error) => {
        this.notify.error(error.error.error)
-      //alert('Querry faild');
+     
     });
   
   }
 
   handlResponse(res){
-    console.log(res)
+    
+    this.Notify.success(res.data,{timeout:0});
     this.login.email = null;
     
   }
